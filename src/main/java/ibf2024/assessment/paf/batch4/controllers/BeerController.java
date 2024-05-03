@@ -15,6 +15,7 @@ import ibf2024.assessment.paf.batch4.models.Brewery;
 import ibf2024.assessment.paf.batch4.models.Style;
 import ibf2024.assessment.paf.batch4.services.BeerService;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -74,12 +75,13 @@ public class BeerController {
 
 	// TODO Task 5 - view 2, place order
 	@PostMapping("/brewery/{breweryId}/order")
-	public String placeOrder(Model model) {
+	public ModelAndView placeOrder(Model model) {
+		ModelAndView mav = new ModelAndView("view3");
 		//TODO: process POST request
 		// if quantity > 0, create order
 			// create order
 		// add attribute orderId
-		return "view3";
+		return mav;
 	}
 	
 
