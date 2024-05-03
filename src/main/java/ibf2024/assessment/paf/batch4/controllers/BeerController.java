@@ -32,16 +32,19 @@ public class BeerController {
 
 	// TODO Task 3 - view 1
 	@GetMapping("/beer/style/{id}")
-	public String showBeersForStyle(@PathVariable("styleName") String styleName,
-									@PathVariable("styleId") int styleId,
-									Model model) {
+	public String showBeersForStyle(@PathVariable("id") int styleId,
+			@RequestParam("styleName") String styleName,
+			Model model) {
 
 		// TODO: if no data, return "BeersNotFound"
-
+		model.addAttribute("styleName", styleName);
 		List<Beer> beers = beerService.getBreweriesByBeer(styleId);
-		model.addAttribute("beers", beers);
-
-		return "view1";
+		if (beers.isEmpty()) {
+			return "BeersNotFound";
+		} else {
+			model.addAttribute("beers", beers);
+			return "view1";
+		}
 	}
 
 	// also take query params

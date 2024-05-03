@@ -22,4 +22,12 @@ public class BeerQueries {
         WHERE style_id = ?
         ORDER BY beers.name ASC;
             """;
+
+    public static final String SQL_SELECT_BREWERY_DETAILS_BY_BREWERY_ID = """
+        SELECT br.id AS brewery_id, br.name AS brewery_name, br.address1 AS address_1, br.address2 AS address_2, br.city AS city, br.phone AS phone, br.website AS website, br.descript AS description, be.id AS beer_id, be.name AS beer_name, be.descript AS beer_description
+        FROM breweries br RIGHT JOIN beers be
+        ON br.id = be.brewery_id
+        WHERE br.id = ?
+        ORDER BY beer_name;
+            """;
 }

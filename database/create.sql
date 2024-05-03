@@ -3,7 +3,6 @@
 -- populate the database with the given SQL files
 
 CREATE SCHEMA brewery;
-
 USE brewery;
 
 -- SOURCE database/beers.sql;
@@ -11,6 +10,10 @@ USE brewery;
 -- SOURCE database/categories.sql;
 -- SOURCE database/geocodes.sql;
 -- SOURCE database/styles.sql;
+
+CREATE USER 'brewery'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON brewery.* TO 'brewery'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 
 DROP TABLE IF EXISTS `beers`;
 CREATE TABLE `beers` (
@@ -80,3 +83,6 @@ CREATE TABLE `styles` (
   PRIMARY KEY  (`id`),
 	foreign key(`cat_id`) references categories(`id`)
 );
+
+
+
