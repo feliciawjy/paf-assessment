@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ibf2024.assessment.paf.batch4.models.Beer;
 import ibf2024.assessment.paf.batch4.models.Style;
 import ibf2024.assessment.paf.batch4.services.BeerService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping
@@ -29,6 +31,20 @@ public class BeerController {
 	}
 
 	// TODO Task 3 - view 1
+	@GetMapping("/beer/style/{id}")
+	public String showBeersForStyle(@PathVariable("styleName") String styleName,
+									@PathVariable("styleId") int styleId,
+									Model model) {
+
+		// TODO: if no data, return "BeersNotFound"
+
+		List<Beer> beers = beerService.getBreweriesByBeer(styleId);
+		model.addAttribute("beers", beers);
+
+		return "view1";
+	}
+
+	// also take query params
 
 	// TODO Task 4 - view 2
 

@@ -14,4 +14,12 @@ public class BeerQueries {
         GROUP BY styles.id
         ORDER BY count(*) DESC, styles.style_name DESC;
                 """;
+
+    public static final String SQL_SELECT_BEERS_BY_STYLE_ID = """
+        SELECT beers.id AS beer_id, beers.name AS beer_name, beers.descript AS beer_description, breweries.id AS brewery_id, breweries.name AS brewery_name
+        FROM beers LEFT JOIN breweries
+        ON beers.brewery_id = breweries.id
+        WHERE style_id = ?
+        ORDER BY beers.name ASC;
+            """;
 }

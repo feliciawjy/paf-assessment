@@ -35,10 +35,20 @@ public class BeerRepository {
 	}
 
 	// DO NOT CHANGE THE METHOD'S NAME OR THE RETURN TYPE OF THIS METHOD
-	public List<Beer> getBreweriesByBeer(/* You can add any number parameters here */) {
+	public List<Beer> getBreweriesByBeer(int styleId) {
 		// TODO: Task 3
-
-		return null;
+		List<Beer> beers = new LinkedList<>();
+		SqlRowSet rs = jdbcTemplate.queryForRowSet(BeerQueries.SQL_SELECT_STYLES_COUNT);
+		while (rs.next()) {
+			Beer beer = new Beer();
+			beer.setBeerId(rs.getInt("beer_id"));
+			beer.setBeerName(rs.getString("beer_name"));
+			beer.setBeerDescription(rs.getString("beer_description"));
+			beer.setBreweryId(rs.getInt("brewery_id"));
+			beer.setBreweryName(rs.getString("brewery_name"));
+			beers.add(beer);
+		}
+		return beers;
 	}
 
 	// DO NOT CHANGE THE METHOD'S NAME OR THE RETURN TYPE OF THIS METHOD
