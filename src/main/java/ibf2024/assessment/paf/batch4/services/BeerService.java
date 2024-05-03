@@ -9,14 +9,19 @@ import org.springframework.stereotype.Service;
 
 import ibf2024.assessment.paf.batch4.models.Beer;
 import ibf2024.assessment.paf.batch4.models.Brewery;
+import ibf2024.assessment.paf.batch4.models.Order;
 import ibf2024.assessment.paf.batch4.models.Style;
 import ibf2024.assessment.paf.batch4.repositories.BeerRepository;
+import ibf2024.assessment.paf.batch4.repositories.OrderRepository;
 
 @Service
 public class BeerService {
 
 	@Autowired
 	private BeerRepository beerRepo;
+
+	@Autowired
+	private OrderRepository orderRepo;
 
 	public List<Style> getStyles() {
 		List<Style> styles = beerRepo.getStyles();
@@ -34,9 +39,10 @@ public class BeerService {
 	}
 
 	// DO NOT CHANGE THE METHOD'S NAME OR THE RETURN TYPE OF THIS METHOD
-	public String placeOrder(/* You can add any number parameters here */) {
+	public String placeOrder(Order order) {
 		// TODO: Task 5
 
+		// strigify and return json string
 		return "";
 	}
 
