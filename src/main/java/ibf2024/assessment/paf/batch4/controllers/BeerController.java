@@ -81,7 +81,7 @@ public class BeerController {
 		Order order= new Order();
 		mav.addObject("Order", order);
 		//TODO: process POST request
-		// if quantity > 0, create order
+		// if beer quantity > 0, create order
 			// create order
 		// add attribute orderId
 		return mav;
