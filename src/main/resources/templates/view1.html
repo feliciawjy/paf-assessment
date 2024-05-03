@@ -27,7 +27,7 @@
 						<span data-th-text="*{beerDescription}"></span> 
 					</td>
 					<td>
-						<a data-th-href="@{/brewery/{breweryId}}">
+						<a data-th-href="@{/brewery/{id}?breweryName={breweryName}(id=*{breweryId}, breweryName=*{breweryName})}">
 							<span data-th-text="*{breweryName}"></span>
 						</a>
 					</td>

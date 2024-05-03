@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ibf2024.assessment.paf.batch4.models.Beer;
+import ibf2024.assessment.paf.batch4.models.Brewery;
 import ibf2024.assessment.paf.batch4.models.Style;
 import ibf2024.assessment.paf.batch4.services.BeerService;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +51,23 @@ public class BeerController {
 	// also take query params
 
 	// TODO Task 4 - view 2
+	@GetMapping("brewery/{id}")
+	public String showBeersForBrewery(@PathVariable("id") int breweryId,
+			@RequestParam("breweryName") String breweryName,
+			Model model) {
+		Brewery brewery = beerService.getBeersFromBrewery(breweryId).get();
+		if (brewery == null) {
+			return "BreweryNotFound";
+		} else {
+			model.addAttribute("brewery", brewery);
+			List<Beer> beers = brewery.getBeers();
+			model.addAttribute("beers", beers);
+
+			return "view2";
+
+		}
+
+	}
 
 	// TODO Task 5 - view 2, place order
 
