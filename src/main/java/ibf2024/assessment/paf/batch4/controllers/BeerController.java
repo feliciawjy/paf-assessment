@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import ibf2024.assessment.paf.batch4.models.Beer;
 import ibf2024.assessment.paf.batch4.models.Brewery;
+import ibf2024.assessment.paf.batch4.models.Order;
 import ibf2024.assessment.paf.batch4.models.Style;
 import ibf2024.assessment.paf.batch4.services.BeerService;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,6 +78,8 @@ public class BeerController {
 	@PostMapping("/brewery/{breweryId}/order")
 	public ModelAndView placeOrder(Model model) {
 		ModelAndView mav = new ModelAndView("view3");
+		Order order= new Order();
+		mav.addObject("Order", order);
 		//TODO: process POST request
 		// if quantity > 0, create order
 			// create order
